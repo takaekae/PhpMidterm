@@ -32,48 +32,45 @@ if ($id) {
 <head>
     <meta charset="UTF-8">
     <title>View Record</title>
+    <!-- Add Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.1/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<style>
-    body {
-        font: 14px sans-serif;
-        text-align: center;
-    }
-</style>
 
-<body>
-    <h1 style="margin-bottom: 0px;"><b>View Record</b></h1>
+<body class="bg-gray-100">
+    <h1 class="text-3xl font-bold my-3">View Record</h1>
     <p>
-        <a href="members.php">Member List</a>
+        <a href="members.php" class="inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">Member List</a>
     </p>
 
-    <hr>
+    <hr class="my-4">
 
     <?php if ($id && $member) { ?>
-        <table>
+        <table class="table-auto">
             <tr>
-                <td><strong>Name</strong></td>
+                <td class="font-bold">Name</td>
                 <td><?php echo $member['name']; ?></td>
             </tr>
             <tr>
-                <td><strong>Gender</strong></td>
+                <td class="font-bold">Gender</td>
                 <td><?php echo $member['gender']; ?></td>
             </tr>
             <tr>
-                <td><strong>Email</strong></td>
+                <td class="font-bold">Email</td>
                 <td><?php echo $member['email']; ?></td>
             </tr>
             <tr>
-                <td><strong>Address</strong></td>
+                <td class="font-bold">Address</td>
                 <td><?php echo $member['address']; ?></td>
             </tr>
             <tr>
-                <td><strong>TIN</strong></td>
+                <td class="font-bold">TIN</td>
                 <td><?php echo $member['tin']; ?></td>
             </tr>
         </table>
     <?php } else { ?>
         <p>No record found.</p>
     <?php } ?>
-    <a href="members.php">Back</a>
+    <a href="members.php" class="inline-block bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-700">Back</a>
 </body>
+
 </html>

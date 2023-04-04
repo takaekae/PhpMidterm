@@ -207,67 +207,76 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+    <!-- Add Tailwind CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.3/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <div>
-        <h2>Sign Up</h2>
+<body class="bg-gray-100">
+    <div class="max-w-md mx-auto my-4 p-6 bg-white rounded-md shadow-lg">
+        <h2 class="text-2xl font-bold mb-4">Sign Up</h2>
         <p>Please fill this form to create an account.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div>
-                <label>Username</label>
-                <input type="text" name="username" <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span><?php echo $username_err; ?></span>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="my-4">
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="username">Username</label>
+                <input value="<?php echo $username; ?>" type="text" name="username" id="username"
+                       class="<?php echo (!empty($username_err)) ? 'border-red-500' : 'border-gray-400'; ?> p-2 rounded-md border w-full"
+                       placeholder="Enter your username">
+                <span class="text-red-500 text-sm"><?php echo $username_err; ?></span>
             </div>
-            <div>
-                <label>Password</label>
-                <input type="password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-                <span><?php echo $password_err; ?></span>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="password">Password</label>
+                <input value="<?php echo $password; ?>" type="password" name="password" id="password"
+                       class="<?php echo (!empty($password_err)) ? 'border-red-500' : 'border-gray-400'; ?> p-2 rounded-md border w-full"
+                       placeholder="Enter your password">
+                <span class="text-red-500 text-sm"><?php echo $password_err; ?></span>
             </div>
-            <div>
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password" <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
-                <span><?php echo $confirm_password_err; ?></span>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="confirm_password">Confirm Password</label>
+                <input value="<?php echo $confirm_password; ?>" type="password" name="confirm_password" id="confirm_password"
+                       class="<?php echo (!empty($confirm_password_err)) ? 'border-red-500' : 'border-gray-400'; ?> p-2 rounded-md border w-full"
+                       placeholder="Confirm your password">
+                <span class="text-red-500 text-sm"><?php echo $confirm_password_err; ?></span>
             </div>
-            <div>
-                <label>Last Name</label>
-                <input type="text" name="lastname" <?php echo (!empty($lastname_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $lastname; ?>">
-                <span><?php echo $lastname_err; ?></span>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="lastname">Last Name</label>
+                <input value="<?php echo $lastname; ?>" type="text" name="lastname" id="lastname"
+                       class="<?php echo (!empty($lastname_err)) ? 'border-red-500' : 'border-gray-400'; ?> p-2 rounded-md border w-full"
+                       placeholder="Enter your last name">
+                <span class="text-red-500 text-sm"><?php echo $lastname_err; ?></span>
             </div>
-            <div>
-                <label>First Name</label>
-                <input type="text" name="firstname" <?php echo (!empty($firstname_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $firstname; ?>">
-                <span><?php echo $firstname_err; ?></span>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="firstname">First Name</label>
+                <input value="<?php echo $firstname; ?>" type="text" name="firstname" id="firstname"
+                       class="<?php echo (!empty($firstname_err)) ? 'border-red-500' : 'border-gray-400'; ?> p-2 rounded-md border w-full"
+                       placeholder="Enter your first name">
+                <span class="text-red-500 text-sm"><?php echo $firstname_err; ?></span>
             </div>
-            <div>
-                <label for="gender">Gender</label><br>
-                    <select name="gender" <?php echo (!empty($gender_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $gender; ?>">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <span><?php echo $gender_err; ?></span>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="gender">Gender</label>
+                <select name="gender" id="gender"
+                       class="<?php echo (!empty($gender_err)) ? 'border-red-500' : 'border-gray-400'; ?> p-2 rounded-md border w-full">
+                    <option value="Male" <?php if($gender == "Male") echo "selected"; ?>>Male</option>
+                    <option value="Female" <?php if($gender == "Female") echo "selected"; ?>>Female</option>
                 </select>
+                <span class="text-red-500 text-sm"><?php echo $gender_err; ?></span>
             </div>
-            <div>
-                <label>Birthdate</label><br>
-                <input type="date" name="birthdate" <?php echo (!empty($birthdate_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $birthdate; ?>">
-                <span><?php echo $birthdate_err; ?></span>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="birthdate">Birthdate</label>
+                <input value="<?php echo $birthdate; ?>" type="date" name="birthdate" id="birthdate"
+                       class="<?php echo (!empty($birthdate_err)) ? 'border-red-500' : 'border-gray-400'; ?> p-2 rounded-md border w-full">
+                <span class="text-red-500 text-sm"><?php echo $birthdate_err; ?></span>
             </div>
-            <div>
-                <input type="submit" value="Submit">
-                <input type="reset" value="Reset">
+            <div class="flex justify-between items-center">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Submit</button>
+                <button type="reset" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Reset</button>
             </div>
-            <p>Already have an account? <a href="login.php">Login here</a>.</p>
+            <p class="mt-4">Already have an account? <a href="login.php" class="text-blue-500">Login here</a>.</p>
         </form>
     </div>
 </body>
 </html>
+

@@ -22,16 +22,22 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <style>
-        body{ font: 14px sans-serif; text-align: center; }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-<h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
-    <p>
-        <a href="reset-password.php">Reset Your Password</a>
-        <a href="members.php">Continue to Members Area</a>
-        <a href="logout.php">Sign Out of Your Account</a>
-    </p>
+
+<body class="bg-gray-100 text-gray-900">
+    <div class="mx-auto container py-10">
+    <h1 class="text-3xl mb-5 text-center">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
+        <div class="flex justify-center items-center">
+            <a href="reset-password.php"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Reset Your Password</a>
+
+            <a href="members.php"
+            class="ml-5 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Continue to Members Area</a>
+
+            <a href="logout.php"
+            class="ml-5 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Sign Out of Your Account</a>
+        </div>
+    </div>
 </body>
 </html>

@@ -88,44 +88,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($link);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
 
-    <style>
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 360px; padding: 20px; }
-    </style>
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
-    <d>
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
+    <div class="container mx-auto my-4 p-4 bg-white border rounded">
+
+        <h2 class="text-2xl font-bold mb-4">Login</h2>
+        <p class="mb-4">Please fill in your credentials to login.</p>
 
         <?php
         if(!empty($login_err)){
-            echo$login_err . '</div>';
+            echo '<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4">';
+            echo $login_err;
+            echo '</div>';
         }
         ?>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div>
-                <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span><?php echo $username_err; ?></span>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">Username</label>
+                <input type="text" name="username" class="form-input <?php echo (!empty($username_err)) ? 'border-red-500' : ''; ?>" value="<?php echo $username; ?>">
+                <span class="text-red-500"><?php echo $username_err; ?></span>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2">Password</label>
+                <input type="password" name="password" class="form-input <?php echo (!empty($password_err)) ? 'border-red-500' : ''; ?>">
+                <span class="text-red-500"><?php echo $password_err; ?></span>
             </div>
             <div>
-                <label>Password</label>
-                <input type="password" name="password" <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                <span><?php echo $password_err; ?></span>
+                <input type="submit" value="Login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
             </div>
-            <div>
-                <input type="submit" value="Login">
-            </div>
-            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+            <p class="mt-4">Don't have an account? <a href="register.php" class="text-blue-500 font-bold">Sign up now</a>.</p>
         </form>
     </div>
 </body>

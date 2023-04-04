@@ -25,65 +25,95 @@ $members = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Members Area</title>
-    <style>
-        body {
-            font: 14px sans-serif;
-            text-align: center;
-        }
-        .custom-margin{
-            margin-left: -50px;
-        }
-    </style>
+    <!-- Tailwind CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.15/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
-<h1>User: <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Members Area.</h1>
-    <p>
-        <a href="logout.php">Sign Out of Your Account</a>
-    </p>
+<body class="bg-gray-100">
 
-    <hr>
+<div class="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <h1 class="text-2xl font-semibold text-gray-600 mb-3">User: <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Members Area.</h1>
 
-
-    <div>
-        <div>
-            <h2>Member List:</h2>
-        </div>
-        <div>
-            <p><a href="add.php">Add New Record</a></p>
-        </div>
+    <div class="mt-4 flex justify-between items-center">
+        <hr class="text-gray-400">
+        <a class="text-blue-600 hover:text-blue-500" href="logout.php">Sign Out of Your Account</a>
     </div>
 
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Gender</th>
-          <th scope="col">Email</th>
-          <th scope="col">Address</th>
-          <th scope="col">TIN</th>
-          <th scope="col" colspan="3">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($members as $member) : ?>
-        <tr>
-          <td><?php echo $member['name']; ?></td>
-          <td><?php echo $member['gender']; ?></td>
-          <td><?php echo $member['email']; ?></td>
-          <td><?php echo $member['address']; ?></td>
-          <td><?php echo $member['tin']; ?></td>
-          <td><a href="view.php?id=<?php echo $member['id']; ?>">View</a></td>
-            <td><a href="edit.php?id=<?php echo $member['id']; ?>">Edit</a></td>
-            <td><a href="delete.php?id=<?php echo $member['id']; ?>">Delete</a></td>
-        </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+    <div class="mt-8 bg-white overflow-hidden shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6">
+            <div class="flex justify-between">
+                <h2 class="text-lg leading-6 font-medium text-gray-900 mb-3">Member List:</h2>
+                <a class="text-sm text-blue-600 hover:text-blue-500" href="add.php">Add New Record</a>
+            </div>
 
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Name
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Gender
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Email
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Address
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        TIN
+                    </th>
+                    <th scope="col" colspan="3"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Action
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                <?php foreach ($members as $member) : ?>
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                            <?php echo $member['name']; ?>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <?php echo $member['gender']; ?>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <?php echo $member['email']; ?>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <?php echo $member['address']; ?>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                            <?php echo $member['tin']; ?>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a href="view.php?id=<?php echo $member['id']; ?>"
+                               class="text-blue-600 hover:text-blue-500">View</a>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a href="edit.php?id=<?php echo $member['id']; ?>"
+                               class="text-blue-600 hover:text-blue-500">Edit</a>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            <a href="delete.php?id=<?php echo $member['id']; ?>"
+                               class="text-red-600 hover:text-red-500">Delete</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </body>
 </html>
