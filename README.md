@@ -27,11 +27,12 @@ Members Area
 ![image](https://user-images.githubusercontent.com/95976269/229799184-fdb3caa1-75b8-4b00-850f-2921f4b208b7.png)
 
 
-```php
+
  Note: How to download? 
 - Click the ` < >Code` green button
 - Click `Local` and download `zip` 
-```
+- Don't forget to put this folder to your `htdocs directory` 
+
 
 ![image](https://user-images.githubusercontent.com/95976269/229799980-6eb86da1-3332-45fc-ae70-42335ad2c4a2.png)
 
